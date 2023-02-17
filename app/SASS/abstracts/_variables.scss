@@ -1,0 +1,9 @@
+@use "../base/functions" as func;
+
+$main-transition: 300ms ease-in-out;
+$border-height-on-hover: func.rem(5);
+
+$img-size-large: func.rem(500);
+$thumbnail-gap-large: 2rem;
+$img-size-medium: func.rem(300);
+$thumbnail-gap-medium: 1rem;

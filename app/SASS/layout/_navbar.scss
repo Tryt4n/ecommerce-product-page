@@ -1,0 +1,176 @@
+@use "../base/functions" as func;
+@use "../abstracts/colors" as c;
+@use "../abstracts/variables" as v;
+@use "../abstracts/mixins" as *;
+
+header {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.navbar {
+  @include flex(row, space-between, center);
+  z-index: 100;
+
+  @media (width >= 768px) {
+    &__hamburger-btn,
+    &__close-btn {
+      display: none;
+    }
+    &__list {
+      @include flex(row, center, center);
+      gap: 2rem;
+
+      & ul {
+        @include flex();
+        gap: 1em;
+
+        & li {
+          padding: 2rem 0;
+        }
+      }
+    }
+
+    & a {
+      position: relative;
+      color: c.$dark-grayish-blue;
+      padding: 2rem 0;
+      transition: v.$main-transition;
+      &:has(img) {
+        padding: 0;
+        &::after {
+          visibility: hidden;
+        }
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: v.$border-height-on-hover;
+        width: 100%;
+        background: c.$orange;
+        scale: 0;
+        transition: v.$main-transition;
+      }
+      &:is(:hover, :focus) {
+        color: c.$very-dark-blue;
+        &::after {
+          scale: 1;
+        }
+      }
+    }
+  }
+
+  &__cart-wrap {
+    @include flex();
+    gap: 1.5rem;
+  }
+
+  &__cart {
+    color: c.$dark-grayish-blue;
+    transition: v.$main-transition;
+    &:is(:hover, :focus) {
+      color: black;
+    }
+  }
+
+  &__avatar {
+    width: func.rem(40);
+    height: func.rem(40);
+    transition: v.$main-transition;
+    border-radius: 50%;
+    border: func.rem(2) solid transparent;
+    & img {
+      width: 100%;
+      height: 100%;
+    }
+    &:is(:hover, :focus) {
+      border-color: c.$orange;
+    }
+  }
+}
+
+hr {
+  margin: 0;
+  border-top: none;
+  border-color: hsl(0, 0%, 0%, 0.1);
+}
+
+@media (width < 768px) {
+  header {
+    width: 100%;
+    padding-bottom: func.rem(20);
+  }
+  .navbar {
+    position: fixed;
+    @include flex(row, space-between, center);
+    width: 100%;
+    padding: 1rem;
+    background: white;
+    &__btn-wrap {
+      display: flex;
+      gap: 1rem;
+    }
+
+    &__mobile-list {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 250px;
+      background: white;
+      @include flex(column, flex-start, flex-start);
+      gap: 2rem;
+      padding: 2rem;
+      transition: 1000ms ease-in-out;
+      translate: -100%;
+
+      & ul {
+        width: 100%;
+        li {
+          padding: 0.5rem 0;
+        }
+      }
+
+      & a {
+        font-weight: bold;
+        transition: v.$main-transition;
+        &:is(:hover, :focus) {
+          opacity: 0.75;
+        }
+      }
+    }
+
+    &__hamburger-btn {
+      display: block;
+    }
+  }
+
+  hr {
+    display: none;
+  }
+
+  .bg-mobile-menu-visible {
+    overflow: hidden;
+    &::before {
+      position: fixed;
+      content: "";
+      width: 100%;
+      height: 100%;
+      inset: 0;
+      background: c.$black-opaque;
+      transition: 1000ms ease-in-out;
+      z-index: 2;
+    }
+  }
+
+  .slide-in {
+    translate: 0;
+  }
+
+  main {
+    margin-top: 22px;
+  }
+}
