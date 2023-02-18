@@ -13,7 +13,12 @@
     <header>
       <nav class="navbar">
         <div class="navbar__btn-wrap">
-          <button id="hamburger-btn" class="navbar__hamburger-btn" data-hamburger-btn>
+          <button
+            id="hamburger-btn"
+            class="navbar__hamburger-btn"
+            aria-label="Open Menu"
+            data-hamburger-btn
+          >
             <svg width="16" height="15" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M16 12v3H0v-3h16Zm0-6v3H0V6h16Zm0-6v3H0V0h16Z"
@@ -25,7 +30,7 @@
           <div class="navbar__list">
             <img class="navbar__logo" src="images/logo.svg" alt="sneakers logo" />
             <div class="navbar__mobile-list" data-mobile-menu>
-              <button class="navbar__close-btn" data-close-btn>
+              <button class="navbar__close-btn" aria-label="Close Menu" data-close-btn>
                 <svg width="14" height="15" xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z"
@@ -66,45 +71,72 @@
 
     <main>
       <section class="product-section">
-        <div class="image-wrapper">
-          <div class="swiper mySwiper carousel">
+        <div class="carousel">
+          <div class="swiper mySwiper2 carousel">
             <div class="swiper-wrapper">
-              <img
-                data-hash="shoes1"
-                src="images/image-product-1.jpg"
-                alt="shoes picture 1"
-                class="swiper-slide"
-              />
-              <img
-                data-hash="shoes2"
-                src="images/image-product-2.jpg"
-                alt="shoes picture 2"
-                class="swiper-slide"
-              />
-              <img
-                data-hash="shoes3"
-                src="images/image-product-3.jpg"
-                alt="shoes picture 3"
-                class="swiper-slide"
-              />
-              <img
-                data-hash="shoes4"
-                src="images/image-product-4.jpg"
-                alt="shoes picture 4"
-                class="swiper-slide"
-              />
+              <div class="swiper-slide" data-hash="shoes1">
+                <div class="swiper-zoom-container">
+                  <img
+                    src="images/image-product-1.jpg"
+                    alt="shoes picture 1"
+                    title="Click for Lightbox"
+                    aria-label="Click for Lightbox"
+                    data-carousel-img
+                  />
+                </div>
+              </div>
+              <div class="swiper-slide" data-hash="shoes2">
+                <div class="swiper-zoom-container">
+                  <img
+                    src="images/image-product-2.jpg"
+                    alt="shoes picture 2"
+                    title="Click for Lightbox"
+                    aria-label="Click for Lightbox"
+                    data-carousel-img
+                  />
+                </div>
+              </div>
+              <div class="swiper-slide" data-hash="shoes3">
+                <div class="swiper-zoom-container">
+                  <img
+                    src="images/image-product-3.jpg"
+                    alt="shoes picture 3"
+                    title="Click for Lightbox"
+                    aria-label="Click for Lightbox"
+                    data-carousel-img
+                  />
+                </div>
+              </div>
+              <div class="swiper-slide" data-hash="shoes4">
+                <div class="swiper-zoom-container">
+                  <img
+                    src="images/image-product-4.jpg"
+                    alt="shoes picture 4"
+                    title="Click for Lightbox"
+                    aria-label="Click for Lightbox"
+                    data-carousel-img
+                  />
+                </div>
+              </div>
             </div>
-            <button class="carousel__btn-next swiper-button-next"></button>
+            <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
           </div>
-
-          <div class="thumbnail-wrapper">
-            <div class="active">
-              <img src="images/image-product-1-thumbnail.jpg" alt="thumbnail shoes 1" />
+          <div thumbsSlider="" class="swiper mySwiper thumbnail-wrapper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img src="images/image-product-1-thumbnail.jpg" alt="thumbnail shoes 1" />
+              </div>
+              <div class="swiper-slide">
+                <img src="images/image-product-2-thumbnail.jpg" alt="thumbnail shoes 2" />
+              </div>
+              <div class="swiper-slide">
+                <img src="images/image-product-3-thumbnail.jpg" alt="thumbnail shoes 3" />
+              </div>
+              <div class="swiper-slide">
+                <img src="images/image-product-4-thumbnail.jpg" alt="thumbnail shoes 4" />
+              </div>
             </div>
-            <div><img src="images/image-product-2-thumbnail.jpg" alt="thumbnail shoes 2" /></div>
-            <div><img src="images/image-product-3-thumbnail.jpg" alt="thumbnail shoes 3" /></div>
-            <div><img src="images/image-product-4-thumbnail.jpg" alt="thumbnail shoes 4" /></div>
           </div>
         </div>
 
@@ -180,6 +212,109 @@
             </button>
           </div>
         </div>
+      </section>
+
+      <section data-lightbox-section>
+        <dialog class="lightbox" data-lightbox>
+          <button aria-label="Close Lightbox" data-close-btn-lightbox>
+            <svg width="14" height="15" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z"
+                fill="currentColor"
+                fill-rule="evenodd"
+              />
+            </svg>
+          </button>
+          <div class="lightbox__container">
+            <div class="swiper mySwiper4">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide" data-hash="shoes1">
+                  <div class="swiper-zoom-container">
+                    <img
+                      id="shoes-img-1"
+                      src="images/image-product-1.jpg"
+                      alt="shoes picture 1"
+                      title="Double click for zoom"
+                      aria-label="Double click for zoom"
+                    />
+                  </div>
+                </div>
+                <div class="swiper-slide" data-hash="shoes2">
+                  <div class="swiper-zoom-container">
+                    <img
+                      id="shoes-img-2"
+                      src="images/image-product-2.jpg"
+                      alt="shoes picture 2"
+                      title="Double click for zoom"
+                      aria-label="Double click for zoom"
+                    />
+                  </div>
+                </div>
+                <div class="swiper-slide" data-hash="shoes3">
+                  <div class="swiper-zoom-container">
+                    <img
+                      id="shoes-img-3"
+                      src="images/image-product-3.jpg"
+                      alt="shoes picture 3"
+                      title="Double click for zoom"
+                      aria-label="Double click for zoom"
+                    />
+                  </div>
+                </div>
+                <div class="swiper-slide" data-hash="shoes4">
+                  <div class="swiper-zoom-container">
+                    <img
+                      id="shoes-img-4"
+                      src="images/image-product-4.jpg"
+                      alt="shoes picture 4"
+                      title="Double click for zoom"
+                      aria-label="Double click for zoom"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-button-next"></div>
+              <div class="swiper-button-prev"></div>
+            </div>
+          </div>
+
+          <div thumbsSlider="" class="swiper mySwiper3">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img
+                  src="images/image-product-1-thumbnail.jpg"
+                  alt="thumbnail shoes 1"
+                  aria-labelledby="shoes-img-1"
+                  aria-label="Click for image change"
+                />
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="images/image-product-2-thumbnail.jpg"
+                  alt="thumbnail shoes 2"
+                  aria-labelledby="shoes-img-2"
+                  aria-label="Click for image change"
+                />
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="images/image-product-3-thumbnail.jpg"
+                  alt="thumbnail shoes 3"
+                  aria-labelledby="shoes-img-3"
+                  aria-label="Click for image change"
+                />
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="images/image-product-4-thumbnail.jpg"
+                  alt="thumbnail shoes 4"
+                  aria-labelledby="shoes-img-4"
+                  aria-label="Click for image change"
+                />
+              </div>
+            </div>
+          </div>
+        </dialog>
       </section>
     </main>
 

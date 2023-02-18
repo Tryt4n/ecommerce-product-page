@@ -2,8 +2,5 @@
 @forward "./components/quantity-input";
 @forward "./layout/navbar";
 @forward "./layout/carousel";
-
-body {
-  width: 100%;
-  height: 100vh;
-}
+@forward "./layout/lightbox";
+@forward "./layout/shoppingCart";

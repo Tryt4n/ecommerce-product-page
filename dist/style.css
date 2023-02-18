@@ -5,6 +5,25 @@
   box-sizing: border-box;
 }
 
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #999 transparent;
+  z-index: 100;
+}
+
+html::-webkit-scrollbar {
+  width: 0.5vw;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: #999;
+  border-radius: 9999px;
+}
+
+html::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
 body,
 h1,
 h2,
@@ -74,12 +93,12 @@ input[type=number] {
   text-align: center;
   font-weight: bold;
 }
-@media (width < 1100px) {
+@media (width < 68.75rem) {
   .quantity-input-wrapper input {
     width: 2rem;
   }
 }
-@media (width < 768px) {
+@media (width < 48rem) {
   .quantity-input-wrapper input {
     width: 100%;
   }
@@ -102,7 +121,12 @@ input[type=number] {
 
 header {
   width: 80%;
-  margin: 0 auto;
+  margin-inline: auto;
+}
+@media (width < 68.75rem) and (width >= 48rem) {
+  header {
+    width: 95%;
+  }
 }
 
 .navbar {
@@ -112,7 +136,7 @@ header {
   align-items: center;
   z-index: 100;
 }
-@media (width >= 768px) {
+@media (width >= 48rem) {
   .navbar__hamburger-btn, .navbar__close-btn {
     display: none;
   }
@@ -198,10 +222,10 @@ hr {
   border-color: hsla(0deg, 0%, 0%, 0.1);
 }
 
-@media (width < 768px) {
+@media (width < 48rem) {
   header {
     width: 100%;
-    padding-bottom: 1.25rem;
+    padding-bottom: 4.5rem;
   }
   .navbar {
     position: fixed;
@@ -222,7 +246,7 @@ hr {
     top: 0;
     left: 0;
     height: 100vh;
-    width: 250px;
+    width: 15.625rem;
     background: white;
     display: flex;
     flex-direction: column;
@@ -268,14 +292,7 @@ hr {
   .slide-in {
     translate: 0;
   }
-  main {
-    margin-top: 22px;
-  }
 }
-.swiper {
-  margin: 0 !important;
-}
-
 .swiper-button-next,
 .swiper-button-prev {
   background: hsl(223deg, 64%, 98%);
@@ -285,13 +302,33 @@ hr {
 
 .swiper-button-next::after {
   content: url("/app/images/icon-next.svg") !important;
-  font-size: 18px !important;
+  font-size: 1.125rem !important;
 }
 
 .swiper-button-prev::after {
   content: url("/app/images/icon-previous.svg") !important;
-  font-size: 18px !important;
+  font-size: 1.125rem !important;
   translate: -15%;
+}
+
+.mySwiper .swiper-slide {
+  transition: 300ms ease-in-out;
+  cursor: pointer;
+}
+.mySwiper .swiper-slide:is(:hover, :focus) {
+  opacity: 0.6;
+}
+
+.mySwiper .swiper-slide-thumb-active {
+  position: relative;
+  opacity: 0.3;
+}
+.mySwiper .swiper-slide-thumb-active:is(:hover, :focus) {
+  opacity: 0.3;
+}
+
+.mySwiper2 {
+  cursor: pointer;
 }
 
 .text-wrapper h2 {
@@ -353,14 +390,14 @@ hr {
   font-weight: bold;
   color: hsl(25deg, 100%, 94%);
   width: 100%;
-  box-shadow: hsl(26deg, 100%, 55%) 0px 10px 40px -10px;
+  box-shadow: hsl(26deg, 100%, 55%) 0 0.625rem 2.5rem -0.625rem;
   transition: 300ms ease-in-out;
 }
 .btn-cart:is(:hover, :focus) {
   opacity: 0.75;
 }
 
-@media (width >= 768px) {
+@media (width >= 48rem) {
   .product-section {
     width: 80%;
     margin: 0 auto;
@@ -371,72 +408,42 @@ hr {
     gap: 6rem;
     padding: 3rem 0;
   }
-  .carousel {
+  .product-section .carousel {
     width: 31.25rem;
     height: 31.25rem;
-  }
-  .swiper-button-next,
-  .swiper-button-prev {
-    display: none !important;
-  }
-  .thumbnail-wrapper {
-    margin-top: 2rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: stretch;
-    gap: 2rem;
-  }
-  .thumbnail-wrapper img {
-    width: calc((31.25rem - 6rem) / 4);
-    height: calc((31.25rem - 6rem) / 4);
-    cursor: pointer;
-    transition: 300ms ease-in-out;
-  }
-  .thumbnail-wrapper img:is(:hover, :focus) {
-    opacity: 0.5;
-  }
-  .thumbnail-wrapper .active {
-    border: 0.125rem solid hsl(26deg, 100%, 55%);
     border-radius: 1rem;
-    width: calc((31.25rem - 6rem) / 4);
-    height: calc((31.25rem - 6rem) / 4);
+    margin-bottom: 1rem !important;
   }
-  .thumbnail-wrapper .active img {
-    opacity: 0.3;
-    cursor: default;
-    z-index: -1;
+  .product-section .carousel img {
     width: 100%;
     height: 100%;
   }
-  img {
+  .product-section .swiper-button-next,
+  .product-section .swiper-button-prev {
+    display: none !important;
+  }
+  .product-section img {
     border-radius: 1rem;
   }
-  .image-wrapper {
-    width: 50%;
-  }
-  .text-wrapper {
+  .product-section .text-wrapper {
     width: 50%;
   }
 }
-@media (width < 1100px) and (width >= 768px) {
+@media (width < 68.75rem) and (width >= 48rem) {
+  .product-section {
+    width: 95%;
+    gap: 1rem;
+  }
   .carousel {
     width: 18.75rem;
     height: 18.75rem;
-  }
-  .thumbnail-wrapper {
-    margin-top: 1rem;
-    gap: 1rem;
-  }
-  .thumbnail-wrapper img {
-    width: calc((18.75rem - 3rem) / 4) !important;
-    height: calc((18.75rem - 3rem) / 4) !important;
+    margin-bottom: 1rem !important;
   }
   .btn-cart {
     gap: 0.25rem;
   }
 }
-@media (width < 768px) {
+@media (width < 48rem) {
   .product-section {
     display: flex;
     flex-direction: column;
@@ -444,7 +451,7 @@ hr {
     align-items: stretch;
   }
   .thumbnail-wrapper {
-    display: none;
+    display: none !important;
   }
   .text-wrapper {
     width: 90%;
@@ -470,7 +477,56 @@ hr {
     padding: 0.75rem 0;
   }
 }
-body {
+.lightbox {
+  width: max(35dvw, 31.25rem);
+  max-height: max(80vw, 43.75rem);
+  background: transparent;
+  z-index: 10;
+  border: none;
+}
+.lightbox__container {
+  border-radius: 1rem;
+  overflow: hidden;
+}
+.lightbox::backdrop {
+  background: hsla(0deg, 0%, 0%, 0.75);
+}
+.lightbox button {
+  color: white;
   width: 100%;
-  height: 100vh;
+  text-align: end;
+  margin-bottom: 1rem;
+}
+.lightbox img {
+  border-radius: 1rem;
+}
+.lightbox .mySwiper4 {
+  cursor: zoom-in;
+}
+.lightbox .mySwiper3 {
+  margin-inline: auto;
+  margin-top: 2rem;
+}
+.lightbox .mySwiper3 .swiper-slide {
+  cursor: pointer;
+}
+.lightbox .mySwiper3 .swiper-slide img {
+  width: 80%;
+  height: 80%;
+}
+.lightbox .mySwiper3 .swiper-slide img:first-of-type {
+  margin-left: 0.75vw;
+}
+.lightbox .mySwiper3 .swiper-slide {
+  transition: 300ms ease-in-out;
+  cursor: pointer;
+}
+.lightbox .mySwiper3 .swiper-slide:is(:hover, :focus) {
+  opacity: 0.6;
+}
+.lightbox .mySwiper3 .swiper-slide-thumb-active {
+  opacity: 0.1;
+}
+.lightbox .mySwiper3 .swiper-slide-thumb-active:is(:hover, :focus) {
+  opacity: 0.1;
 }/*# sourceMappingURL=style.css.map */

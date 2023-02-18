@@ -4,10 +4,6 @@
 @use "../base/functions" as func;
 
 // SWIPER
-.swiper {
-  margin: 0 !important;
-}
-
 .swiper-button-next,
 .swiper-button-prev {
   background: c.$light-grayish-blue;
@@ -17,12 +13,32 @@
 .swiper-button-next::after {
   content: url("/app/images/icon-next.svg") !important;
 
-  font-size: 18px !important;
+  font-size: func.rem(18) !important;
 }
 .swiper-button-prev::after {
   content: url("/app/images/icon-previous.svg") !important;
-  font-size: 18px !important;
+  font-size: func.rem(18) !important;
   translate: -15%;
+}
+
+.mySwiper .swiper-slide {
+  transition: v.$main-transition;
+  cursor: pointer;
+  &:is(:hover, :focus) {
+    opacity: 0.6;
+  }
+}
+
+.mySwiper .swiper-slide-thumb-active {
+  position: relative;
+  opacity: 0.3;
+  &:is(:hover, :focus) {
+    opacity: 0.3;
+  }
+}
+
+.mySwiper2 {
+  cursor: pointer;
 }
 
 // TEXT
@@ -82,88 +98,56 @@
   font-weight: bold;
   color: c.$pale-orange;
   width: 100%;
-  box-shadow: c.$orange 0px 10px 40px -10px;
+  box-shadow: c.$orange 0 func.rem(10) func.rem(40) func.rem(-10);
   transition: v.$main-transition;
   &:is(:hover, :focus) {
     opacity: 0.75;
   }
 }
 
-@media (width >= 768px) {
+@media (width >= func.rem(768)) {
   .product-section {
     width: 80%;
     margin: 0 auto;
     @include flex(row, center, center);
     gap: 6rem;
     padding: 3rem 0;
-  }
 
-  .carousel {
-    width: v.$img-size-large;
-    height: v.$img-size-large;
-  }
-  .swiper-button-next,
-  .swiper-button-prev {
-    display: none !important;
-  }
-
-  .thumbnail-wrapper {
-    margin-top: v.$thumbnail-gap-large;
-    @include flex(row);
-    gap: v.$thumbnail-gap-large;
-
-    & img {
-      width: calc((v.$img-size-large - (v.$thumbnail-gap-large * 3)) / 4);
-      height: calc((v.$img-size-large - (v.$thumbnail-gap-large * 3)) / 4);
-      cursor: pointer;
-      transition: v.$main-transition;
-
-      &:is(:hover, :focus) {
-        opacity: 0.5;
-      }
-    }
-
-    & .active {
-      border: func.rem(2) solid c.$orange;
+    .carousel {
+      width: v.$img-size-large;
+      height: v.$img-size-large;
       border-radius: 1rem;
-      width: calc((v.$img-size-large - (v.$thumbnail-gap-large * 3)) / 4);
-      height: calc((v.$img-size-large - (v.$thumbnail-gap-large * 3)) / 4);
+      margin-bottom: 1rem !important;
+
       & img {
-        opacity: 0.3;
-        cursor: default;
-        z-index: -1;
         width: 100%;
         height: 100%;
       }
     }
-  }
+    .swiper-button-next,
+    .swiper-button-prev {
+      display: none !important;
+    }
 
-  img {
-    border-radius: 1rem;
-  }
+    img {
+      border-radius: 1rem;
+    }
 
-  .image-wrapper {
-    width: 50%;
-  }
-
-  .text-wrapper {
-    width: 50%;
+    .text-wrapper {
+      width: 50%;
+    }
   }
 }
 
-@media (width < 1100px) and (width >= 768px) {
+@media (width < func.rem(1100)) and (width >= func.rem(768)) {
+  .product-section {
+    width: 95%;
+    gap: 1rem;
+  }
   .carousel {
     width: v.$img-size-medium;
     height: v.$img-size-medium;
-  }
-  .thumbnail-wrapper {
-    margin-top: v.$thumbnail-gap-medium;
-    gap: v.$thumbnail-gap-medium;
-
-    & img {
-      width: calc((v.$img-size-medium - (v.$thumbnail-gap-medium * 3)) / 4) !important;
-      height: calc((v.$img-size-medium - (v.$thumbnail-gap-medium * 3)) / 4) !important;
-    }
+    margin-bottom: 1rem !important;
   }
 
   .btn-cart {
@@ -171,13 +155,13 @@
   }
 }
 
-@media (width < 768px) {
+@media (width < func.rem(768)) {
   .product-section {
     @include flex(column, flex-start, stretch);
   }
 
   .thumbnail-wrapper {
-    display: none;
+    display: none !important;
   }
 
   .text-wrapper {

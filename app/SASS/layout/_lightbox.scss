@@ -1,0 +1,66 @@
+@use "../abstracts/colors" as c;
+@use "../abstracts/variables" as v;
+@use "../base/functions" as func;
+
+.lightbox {
+  width: max(35dvw, func.rem(500));
+  max-height: max(80vw, func.rem(700));
+  background: transparent;
+  z-index: 10;
+  border: none;
+  &__container {
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+
+  &::backdrop {
+    background: c.$black-opaque;
+  }
+
+  & button {
+    color: white;
+    width: 100%;
+    text-align: end;
+    margin-bottom: 1rem;
+  }
+
+  & img {
+    border-radius: 1rem;
+  }
+
+  .mySwiper4 {
+    cursor: zoom-in;
+  }
+
+  .mySwiper3 {
+    margin-inline: auto;
+    margin-top: 2rem;
+  }
+  .mySwiper3 .swiper-slide {
+    cursor: pointer;
+
+    & img {
+      width: 80%;
+      height: 80%;
+
+      &:first-of-type {
+        margin-left: 0.75vw;
+      }
+    }
+  }
+
+  .mySwiper3 .swiper-slide {
+    transition: v.$main-transition;
+    cursor: pointer;
+    &:is(:hover, :focus) {
+      opacity: 0.6;
+    }
+  }
+
+  .mySwiper3 .swiper-slide-thumb-active {
+    opacity: 0.1;
+    &:is(:hover, :focus) {
+      opacity: 0.1;
+    }
+  }
+}
