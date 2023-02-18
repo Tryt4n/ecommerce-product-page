@@ -1,0 +1,19 @@
+@use "../abstracts/colors" as c;
+@use "../abstracts/variables" as v;
+@use "../base/functions" as func;
+
+.btn {
+  background: c.$orange;
+  border-radius: 0.75em;
+  font-weight: bold;
+  color: c.$pale-orange;
+  width: 100%;
+  transition: v.$main-transition;
+  &:is(:hover, :focus) {
+    opacity: 0.75;
+  }
+
+  &--shadow {
+    box-shadow: c.$orange 0 func.rem(10) func.rem(40) func.rem(-10);
+  }
+}

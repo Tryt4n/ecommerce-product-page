@@ -151,7 +151,7 @@ hr {
     }
   }
 
-  hr {
+  hr:not(.line-cart) {
     display: none;
   }
 

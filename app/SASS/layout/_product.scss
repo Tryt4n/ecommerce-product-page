@@ -93,16 +93,6 @@
 .btn-cart {
   @include flex(row, center, center);
   gap: 1rem;
-  background: c.$orange;
-  border-radius: 1em;
-  font-weight: bold;
-  color: c.$pale-orange;
-  width: 100%;
-  box-shadow: c.$orange 0 func.rem(10) func.rem(40) func.rem(-10);
-  transition: v.$main-transition;
-  &:is(:hover, :focus) {
-    opacity: 0.75;
-  }
 }
 
 @media (width >= func.rem(768)) {
