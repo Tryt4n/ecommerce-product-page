@@ -3,6 +3,10 @@
 @use "../abstracts/mixins" as *;
 @use "../base/functions" as func;
 
+.hide {
+  display: none;
+}
+
 .navbar__cart-wrap {
   position: relative;
 }
@@ -40,7 +44,7 @@
   color: c.$dark-grayish-blue;
   @media (width < func.rem(768)) {
     top: 4rem;
-    width: 95vw;
+    width: 90vw;
   }
 
   & h2 {
@@ -51,6 +55,12 @@
   & hr {
     border-top: 0;
     margin: 2rem -2rem;
+  }
+
+  & .empty-information {
+    font-weight: bold;
+    text-align: center;
+    padding-block: 2rem;
   }
 
   & .product-wrap {

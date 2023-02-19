@@ -59,6 +59,7 @@
             aria-expanded="false"
             aria-controls="cart-menu"
             data-btn-outside-mobile-menu
+            data-cart-btn
           >
             <svg aria-label="Cart Icon" width="22" height="20" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -79,44 +80,21 @@
 
           <div
             id="cart-menu"
-            class="cart-menu"
+            class="cart-menu hide"
             role="menu"
             aria-labelledby="cart-menu-heading"
             aria-hidden="true"
+            data-cart-container
           >
             <h2 id="cart-menu-heading">Cart</h2>
             <hr class="line-cart" />
-            <div class="product-wrap">
-              <img src="images/image-product-1-thumbnail.jpg" alt="product shoes" />
-              <div class="product-wrap__text">
-                <p>Fall Limited Edition Sneakers</p>
-                <div>
-                  <span>$125.00</span>
-                  <span>x</span>
-                  <span>3</span>
-                  <strong>$375.00</strong>
-                </div>
-              </div>
-              <button aria-labelledby="delete-description" data-btn-delete-position>
-                <svg
-                  aria-label="Trash Icon"
-                  width="14"
-                  height="16"
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink"
-                >
-                  <defs>
-                    <path
-                      d="M0 2.625V1.75C0 1.334.334 1 .75 1h3.5l.294-.584A.741.741 0 0 1 5.213 0h3.571a.75.75 0 0 1 .672.416L9.75 1h3.5c.416 0 .75.334.75.75v.875a.376.376 0 0 1-.375.375H.375A.376.376 0 0 1 0 2.625Zm13 1.75V14.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 1 14.5V4.375C1 4.169 1.169 4 1.375 4h11.25c.206 0 .375.169.375.375ZM4.5 6.5c0-.275-.225-.5-.5-.5s-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5v-7Zm3 0c0-.275-.225-.5-.5-.5s-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5v-7Zm3 0c0-.275-.225-.5-.5-.5s-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5v-7Z"
-                      id="a"
-                    />
-                  </defs>
-                  <use fill="#C3CAD9" fill-rule="nonzero" xlink:href="#a" />
-                </svg>
-                <span id="delete-description" class="visually-hidden">Delete product</span>
+            <p class="empty-information" data-cart-information-empty>Your cart is empty</p>
+            <div>
+              <div data-product-wrap></div>
+              <button class="btn btn-checkout hide" aria-hidden="true" data-btn-checkout>
+                Checkout
               </button>
             </div>
-            <button class="btn btn-checkout">Checkout</button>
           </div>
 
           <a href="#" class="navbar__avatar" data-btn-outside-mobile-menu>
@@ -184,16 +162,20 @@
           <div thumbsSlider="" class="swiper mySwiper thumbnail-wrapper">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
-                <img src="images/image-product-1-thumbnail.jpg" alt="thumbnail shoes 1" />
+                <img
+                  src="images/image-product-1-thumbnail.jpg"
+                  alt="shoes 1"
+                  data-product-main-thumbnail
+                />
               </div>
               <div class="swiper-slide">
-                <img src="images/image-product-2-thumbnail.jpg" alt="thumbnail shoes 2" />
+                <img src="images/image-product-2-thumbnail.jpg" alt="shoes 2" />
               </div>
               <div class="swiper-slide">
-                <img src="images/image-product-3-thumbnail.jpg" alt="thumbnail shoes 3" />
+                <img src="images/image-product-3-thumbnail.jpg" alt="shoes 3" />
               </div>
               <div class="swiper-slide">
-                <img src="images/image-product-4-thumbnail.jpg" alt="thumbnail shoes 4" />
+                <img src="images/image-product-4-thumbnail.jpg" alt="shoes 4" />
               </div>
             </div>
           </div>
@@ -201,14 +183,14 @@
 
         <div class="text-wrapper">
           <h2>sneaker company</h2>
-          <h1>Fall Limited Edition Sneakers</h1>
+          <h1 data-product-name>Fall Limited Edition Sneakers</h1>
           <p>
             These low-profile sneakers are your perfect casual wear companion. Featuring a durable
             rubber outer sole, they'll withstand everything the weather can offer.
           </p>
           <div class="price">
             <div class="price__wrapper">
-              <strong class="price--new">$125.00</strong>
+              <strong class="price--new" data-product-price>$125.00</strong>
               <em>50%</em>
             </div>
             <del class="price--old">$250.00</del>
@@ -286,6 +268,7 @@
               class="btn btn--shadow btn-cart"
               aria-describedby="btn-description"
               data-add-to-cart-btn
+              data-product="Fall Limited Edition Sneakers"
             >
               <svg width="22" height="20" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -403,6 +386,39 @@
         </dialog>
       </section>
     </main>
+
+    <template data-product-template>
+      <div class="product-wrap">
+        <img data-cart-product-img />
+        <div class="product-wrap__text">
+          <p data-cart-product-name></p>
+          <div>
+            <span data-cart-price></span>
+            <span>x</span>
+            <span data-cart-quantity>0</span>
+            <strong data-cart-overall-price></strong>
+          </div>
+        </div>
+        <button aria-labelledby="delete-description" data-cart-btn-delete-position>
+          <svg
+            aria-label="Trash Icon"
+            width="14"
+            height="16"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+          >
+            <defs>
+              <path
+                d="M0 2.625V1.75C0 1.334.334 1 .75 1h3.5l.294-.584A.741.741 0 0 1 5.213 0h3.571a.75.75 0 0 1 .672.416L9.75 1h3.5c.416 0 .75.334.75.75v.875a.376.376 0 0 1-.375.375H.375A.376.376 0 0 1 0 2.625Zm13 1.75V14.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 1 14.5V4.375C1 4.169 1.169 4 1.375 4h11.25c.206 0 .375.169.375.375ZM4.5 6.5c0-.275-.225-.5-.5-.5s-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5v-7Zm3 0c0-.275-.225-.5-.5-.5s-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5v-7Zm3 0c0-.275-.225-.5-.5-.5s-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5v-7Z"
+                id="a"
+              />
+            </defs>
+            <use fill="#C3CAD9" fill-rule="nonzero" xlink:href="#a" />
+          </svg>
+          <span id="delete-description" class="visually-hidden">Delete product</span>
+        </button>
+      </div>
+    </template>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
   </body>

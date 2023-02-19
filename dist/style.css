@@ -59,6 +59,12 @@ button {
   cursor: pointer;
 }
 
+img {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
 body {
   font-family: "Kumbh Sans", sans-serif;
   font-weight: 400;
@@ -536,6 +542,10 @@ hr {
   opacity: 0.1;
 }
 
+.hide {
+  display: none;
+}
+
 .navbar__cart-wrap {
   position: relative;
 }
@@ -574,7 +584,7 @@ hr {
 @media (width < 48rem) {
   .cart-menu {
     top: 4rem;
-    width: 95vw;
+    width: 90vw;
   }
 }
 .cart-menu h2 {
@@ -584,6 +594,11 @@ hr {
 .cart-menu hr {
   border-top: 0;
   margin: 2rem -2rem;
+}
+.cart-menu .empty-information {
+  font-weight: bold;
+  text-align: center;
+  padding-block: 2rem;
 }
 .cart-menu .product-wrap {
   display: flex;

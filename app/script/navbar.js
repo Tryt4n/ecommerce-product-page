@@ -28,6 +28,7 @@ export default function handleNavbar() {
 
   hamburgerBtn.addEventListener("click", () => {
     openMobileMenu();
+    closeBtnCart();
   });
 
   closeBtn.addEventListener("click", () => {
@@ -78,4 +79,14 @@ function closeMobileMenu() {
   menuListItems.forEach((item) => item.setAttribute("tabindex", "-1"));
   body.classList.remove("bg-mobile-menu-visible");
   btnOutsideMobileMenu.forEach((btn) => btn.removeAttribute("tabindex"));
+}
+
+const cartBtn = document.querySelector("[data-cart-btn]");
+const cartContainer = document.querySelector("[data-cart-container]");
+function closeBtnCart() {
+  if (!cartContainer.classList.contains("hide")) {
+    cartContainer.classList.add("hide");
+    cartContainer.setAttribute("aria-hidden", true);
+    cartBtn.setAttribute("aria-expanded", false);
+  }
 }
