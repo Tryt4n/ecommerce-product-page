@@ -1,5 +1,7 @@
 # Frontend Mentor - E-commerce product page
 
+[Link to the page](https://e-commerce-product-page-with-swiperjs.netlify.app/app/)
+
 ![Design preview for the E-commerce product page coding challenge](./design/desktop-preview.jpg)
 
 ## Welcome! 👋
